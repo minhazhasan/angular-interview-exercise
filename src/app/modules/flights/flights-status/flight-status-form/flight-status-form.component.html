@@ -1,0 +1,9 @@
+<form class="form-inline" [formGroup]="flightStatusForm" (ngSubmit)="onCheckFlights(flightStatusForm)">
+    <label for="origin">Origin:</label>
+    <input type="text" placeholder="Enter origin" name="origin" formControlName="origin" [value]="origin.value | uppercase">
+    <label for="destination">Destination:</label>
+    <input type="text" placeholder="Enter destination" name="destination" formControlName="destination" [value]="destination.value | uppercase">
+    <label for="date">Date:</label>
+    <input type="date" placeholder="Enter destination" name="date" formControlName="date" [value]="date.value | uppercase">
+    <button type="submit">Check flights</button>
+</form>
