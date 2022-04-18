@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { environment } from '../environments/environment';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { Observable, of, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
+import { ErrorResponseModel } from 'src/app/models/ErrorResponseModel';
+
 
 @Injectable({
   providedIn: 'root'
@@ -21,9 +23,20 @@ export class FlightsService {
     };
 
     return this.http.get<string>(this.healthEndpoint, options).pipe(
+      catchError((err) => {
+        console.log(`Error Status: ${err.statusCode}, (${err.message})`);
+        return throwError(err);
+      }),
       map((result: string) => {
         return result;
       })
     );
   }
+
+  
+  public get healthEndpointUrl() : string {
+    return this.healthEndpointUrl;
+  }
+  
+
 }

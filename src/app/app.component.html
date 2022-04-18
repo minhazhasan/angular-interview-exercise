@@ -2,12 +2,17 @@
   <span class="header-text">Alaska Air - Angular Interview Exercise</span>
 </header>
 
-<div class="main">
 
-  <p>
-    <strong>Health Ping Result:</strong> {{healthPing | async}}
-  </p>
-
+<div class="container">
+  <div class="sideNav">
+    <div class="menu">
+      <a class="item" routerLink="/flights" routerLinkActive="active">Flights Status</a>
+      <a class="item" routerLink="/health-status" routerLinkActive="active">Health Status</a>
+    </div>
+  </div>
+  <div class="main">
+    <router-outlet></router-outlet>
+  </div>
 </div>
 <footer class="footer">
   Original Repository: <a href="https://github.com/Alaska-ITS/angular-interview-exercise">angular-interview-exercise</a>
